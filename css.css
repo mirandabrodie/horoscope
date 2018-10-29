@@ -1,9 +1,29 @@
 body{
     background-color: lightskyblue;
-    font-family: Avenir;
+    font-family: Luminari, serif;
 }
 
 h1{
-    font-size: 50px;
-    margin: 50px 10px 5px 0px;
+    font-size: 70px;
+}
+.heading{
+    position: relative;
+    text-align: center;
+}
+
+#credit{
+    position: relative;
+    left: 70%;
+    bottom: 50px;
+}
+
+.entries{
+    position: relative;
+    left: 25px;
+    top: 25px;
+}
+.horo{
+    position: relative;
+    top: 25px;
+    left: 25px;
 }

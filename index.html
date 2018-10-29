@@ -8,18 +8,19 @@
 </head>
 
 <body>
-<h1>HOROSCOPE</h1>
-<h2>Discover your horoscope!</h2>
-<h4>Enter your name and birthday below</h4>
+<h1 class = "heading">HOROSCOPE</h1>
+<div id = "credit">By Miranda Brodie</div>
+<h2 class = "heading">Discover your horoscope!</h2>
+<h3 class = "heading">Enter your name and birthday below</h3>
 
-<div>Name:</div>
-<input title = "name" type = "text" id = "name">
+<div class = "entries">Name:</div>
+<input class = "entries" title = "name" type = "text" id = "name">
 
 <br>
 <br>
 
-<div>Month:</div>
-<select title = "month" id = "month">
+<div class = "entries">Month:</div>
+<select class = "entries" title = "month" id = "month">
     <option value = ""> Select Month</option>
     <option value = "1">January</option>
     <option value = "2">February</option>
@@ -38,8 +39,8 @@
 <br>
 <br>
 
-<div>Day:</div>
-<select title = "day" id = "day">
+<div class = "entries">Day:</div>
+<select class = "entries" title = "day" id = "day">
     <option value = "">Select Day</option>
     <option value = "1">1</option>
     <option value = "2">2</option>
@@ -77,14 +78,18 @@
 <br>
 <br>
 
-<button id = "myButton" onlick = "onSubmit()" value = "Submit">Submit</button>
+<button class = "entries" id = "myButton" onclick = "onSubmit()" value = "Submit">Submit</button>
 
 <br>
 <br>
 
 
+<div class = "horo" id="sign"></div>
+<br>
+<img class = "horo" id="image" src="">
+<br>
+<br>
+<div class = "horo" id="horoscope"></div>
 
 </body>
 </html>
-
-

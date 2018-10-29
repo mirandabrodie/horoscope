@@ -1,110 +1,108 @@
-function onSubmit(){
-    var name = document.getElementById("name").value;
-    var month = parseInt(document.getElementById("month").value);
-    var day = parseInt(document.getElementById("day").value);
-    dateValidate(month, day);
-    document.getElementById("sign").innerHTML = "Hi" + name + ", " + "your sign " +
-        "is " + determineSign(month, day) + "!";
-}
-
-
 function dateValidate(x, y){
     if(x === 2 && (y === 29 || y === 30|| y === 31)){
-        return false;
         alert("Invalid date");
+        return false;
     }
     if((x === 4 || x === 6 || x === 9 || x === 11) && y === 31) {
-        return false;
         alert("Invalid date");
+        return false;
     }
 }
 
-
+function ifBirthday(m, d){
+    var birthday = "";
+    var today = new Date();
+    var day = today.getDate();
+    var month = today.getMonth() + 1;
+    if(m === day && d === month){
+        birthday = "Happy Birthday! ";
+    }
+    return birthday;
+}
 
 function determineNumOfSign(x, y){
     if((x === 3 && y >= 21) || (x === 4 && y <= 19)){
-        var sign = 1 //Aries
+        return 1; //Aries
     }
     if((x === 4 && y >= 20) || (x === 5 && y <= 20)){
-       sign = 2 //Taurus
+        return 2; //Taurus
     }
     if((x === 5 && y >= 21) || (x === 6 && y <= 21)){
-        sign = 3 //Gemini
+        return 3; //Gemini
     }
     if((x === 6 && y >= 22) || (x === 7 && y <= 22)){
-        sign = 4 //cancer
+        return 4; //cancer
     }
     if((x === 7 && y >= 23) || (x === 8 && y <= 22)){
-        sign = 5 //leo
+        return 5; //leo
     }
     if((x === 8 && y >= 23) || (x === 9 && y <= 22)){
-        sign = 6 //virgo
+        return 6; //virgo
     }
     if((x === 9 && y >= 23) || (x === 10 && y <= 23)){
-        sign = 7 //libra
+        return 7; //libra
     }
     if((x === 10 && y >= 24) || (x === 11 && y <= 21)){
-        sign = 8 //scorpio
+        return 8; //scorpio
     }
     if((x === 11 && y >= 22) || (x === 12 && y <= 21)){
-        sign = 9 //sagittarius
+        return 9; //sagittarius
     }
     if((x === 12 && y >= 22) || (x === 1 && y <= 19)){
-        sign = 10 //capricorn
+        return 10; //capricorn
     }
     if((x === 1 && y >= 20) || (x === 2 && y <= 18)){
-        sign = 11 //aquarius
+        return 11; //aquarius
     }
     if((x === 2 && y >= 19) || (x === 3 && y <= 20)){
-        sign = 12 //pisces
+        return 12; //pisces
     }
-    return sign;
 }
 
 
-function determineSign(x){
+function determineSign(x, y){
     var whichSign = determineNumOfSign(x, y);
     var sign = "";
-    if(whichSign = 1){
+    if(whichSign === 1){
         sign = "Aries";
     }
-    if(whichSign = 2){
+    if(whichSign === 2){
         sign = "Taurus";
     }
-    if(whichSign = 3){
+    if(whichSign === 3){
         sign = "Gemini";
     }
-    if(whichSign = 4){
+    if(whichSign === 4){
         sign = "Cancer";
     }
-    if(whichSign = 5){
+    if(whichSign === 5){
         sign = "Leo";
     }
-    if(whichSign = 6){
+    if(whichSign === 6){
         sign = "Virgo";
     }
-    if(whichSign = 7){
+    if(whichSign === 7){
         sign = "Libra";
     }
-    if(whichSign = 8){
+    if(whichSign === 8){
         sign = "Scorpio";
     }
-    if(whichSign = 9){
+    if(whichSign === 9){
         sign = "Sagittarius";
     }
-    if(whichSign = 10){
+    if(whichSign === 10){
         sign = "Capricorn";
     }
-    if(whichSign = 11){
+    if(whichSign === 11){
         sign = "Aquarius";
     }
-    if(whichSign = 12){
+    if(whichSign === 12){
         sign = "Pisces";
     }
     return sign;
 }
 
-function determineHoroscope(sign){
+function determineHoroscope(x, y){
     var astro = determineNumOfSign(x, y);
     if(astro === 1){
         var horoscope = "Being shameless isn't a bad thing. " +
@@ -274,43 +272,19 @@ function determineHoroscope(sign){
 }
 
 
-function determineImage(sign){
-    if(sign === 1){
-
-    }
-    if(sign === 2){
-
-    }
-    if(sign === 3){
-
-    }
-    if(sign === 4){
-
-    }
-    if(sign === 5){
-
-    }
-    if(sign === 6){
-
-    }
-    if(sign === 7){
-
-    }
-    if(sign === 8){
-
-    }
-    if(sign === 9){
-
-    }
-    if(sign === 10){
-
-    }
-    if(sign === 11){
-
-    }
-    if(sign === 12){
-
-    }
+function determineImage(x, y){
+    var image = determineSign(x, y);
+    return "images/" + image + ".png";
 }
 
 
+function onSubmit(){
+    var name = document.getElementById("name").value;
+    var x = parseInt(document.getElementById("month").value);
+    var y = parseInt(document.getElementById("day").value);
+    dateValidate(x, y);
+    document.getElementById("sign").innerHTML = "Hi " + name + ". " + ifBirthday(y, x) + "Your sign " +
+        "is " + determineSign(x, y) + "!";
+    document.getElementById("image").src = determineImage(x, y);
+    document.getElementById("horoscope").innerHTML = determineHoroscope(x, y);
+}
